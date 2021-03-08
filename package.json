@@ -1,0 +1,16 @@
+{
+  "name": "leapyear",
+  "version": "1.0.0",
+  "description": "Create a leapyear code",
+  "main": "index.js",
+  "scripts": {
+    "start": "node leapyear.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "prompt": "^1.1.0",
+    "prompt-sync": "^4.2.0"
+  }
+}

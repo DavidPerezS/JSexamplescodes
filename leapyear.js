@@ -1,7 +1,6 @@
 
 const prompt = require('prompt-sync')();
 
-
 const year = prompt('Is your year a leap year? Try: ');
 
 function leapyear(year){
@@ -12,5 +11,4 @@ function leapyear(year){
         console.log('It´s not a leap year');
     }
 }
-
 leapyear(year);

@@ -8,16 +8,17 @@ let result = 0;
 
 const getPoints = () => {
   return new Promise((resolve, reject) => {
-    if (num == rn) {
+    if (num === rn) {
       points += 2;
       resolve(points);
       console.log('+2 points');
-    } else if (num + 1 == rn || num - 1 == rn) {
+    } else if (num + 1 === rn || num - 1 === rn) {
       points += 1;
       resolve(points);
       console.log('+1 points');
     } else {
       console.log('+0 points');
+      resolve(points);
     }
   });
 };
@@ -25,7 +26,7 @@ const getPoints = () => {
 const getResult = async () => {
   try {
     result = await getPoints();
-    return `With the last input value:${num} we now have ${result} points`;
+    return `With the last input value: ${num} we now have ${result} points`;
   } catch (error) {
     throw error;
   }
@@ -44,11 +45,11 @@ const handleGame = async () => {
     num = Number(prompt('Insert a number from 1 to 6: '));
     console.log('Input number was: ' + num);
     if (num > 6 || num < 1) {
-      reject(new Error('Invalid number'));
+      throw new Error('Invalid number');
     }
     rn = randomNumber(1, 6);
     console.log('Random number is equal to: ' + rn);
-    getResult()
+    await getResult()
       .then((msg) => {
         console.log('WELL PLAYED!!');
         console.log(msg);

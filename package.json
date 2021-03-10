@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node leapyear.js",
+    "ex1": "node exercise_1/index.js",
+    "ex2": "node exercise_2/index.js",
     "format": "prettier --write .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

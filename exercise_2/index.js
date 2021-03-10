@@ -14,10 +14,10 @@ const getInformation = async () => {
 const information = async () => {
   const info = getInformation()
     .then(function (res) {
-      if (res.status == 200) {
-        console.log(res.data);
+      if (res.status === 200) {
+        console.log(JSON.stringify(res.data));
       }
-      console.log(res);
+      console.log(res.status);
     })
     .catch(function (err) {
       console.log(err);

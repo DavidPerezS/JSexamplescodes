@@ -1,5 +1,4 @@
 const axios = require('axios');
-const { get } = require('prompt');
 
 const getInformation = async () => {
   try {

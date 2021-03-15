@@ -2,15 +2,13 @@ const axios = require('axios');
 const prompt = require('prompt-sync')();
 const fs = require('fs');
 
-let searchparam = '';
-
-const getJoke = async () => {
+const getJoke = async (searchParam) => {
   const header = {
     headers: { Accept: 'text/plain' },
   };
   try {
     return await axios.get(
-      `https://icanhazdadjoke.com/search?term=${searchparam}`,
+      `https://icanhazdadjoke.com/search?term=${searchParam}`,
       header,
     );
   } catch (error) {
@@ -20,17 +18,17 @@ const getJoke = async () => {
 
 const searchJoke = async () => {
   try {
-    searchparam = prompt('Input search term for jokes: ');
-    console.log(`Input search parameter was: ${searchparam}
+    let searchParam = prompt('Input search term for jokes: ');
+    console.log(`Input search parameter was: ${searchParam}
      `);
-    await getJoke()
+    await getJoke(searchParam)
       .then(function (res) {
         if (res.status === 200) {
           const response = res.data; //text/plain no need to stringify
           console.log(response);
           console.log(
             '\nThe search parameter got: ' +
-              countOccurences(response, searchparam) +
+              countOccurences(response, searchParam) +
               ' results',
           ); // 2
           fs.appendFile('jokes.txt', response, (err) => {

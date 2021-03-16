@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 const axios = require('axios');
 const prompt = require('prompt-sync')();
 const fs = require('fs');

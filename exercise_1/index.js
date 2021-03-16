@@ -1,13 +1,13 @@
 const math = require('mathjs');
 const prompt = require('prompt-sync')();
-let status = true;
+
 let points = 0;
-let num = 0,
-  rn = 0;
+let num = 0;
+let rn = 0;
 let result = 0;
 
-const getPoints = () => {
-  return new Promise((resolve, reject) => {
+const getPoints = () =>
+  new Promise((resolve) => {
     if (num === rn) {
       points += 2;
       resolve(points);
@@ -21,34 +21,37 @@ const getPoints = () => {
       resolve(points);
     }
   });
-};
 
 const getResult = async () => {
   try {
     result = await getPoints();
     return `With the last input value: ${num} we now have ${result} points`;
   } catch (error) {
-    throw error;
+    console.log(error);
+    return error;
   }
 };
 
-const continueGame = () => {
-  return new Promise((resolve, reject) => {
+const continueGame = () =>
+  new Promise((resolve) => {
     const play = prompt('Play again y/n: ');
-    const playStatus = play == 'n' ? false : true;
+    const playStatus = play !== 'n';
     resolve(playStatus);
   });
-};
+
+function randomNumber(min, max) {
+  return math.floor(math.random() * (max - min + 1) + min);
+}
 
 const handleGame = async () => {
   try {
     num = Number(prompt('Insert a number from 1 to 6: '));
-    console.log('Input number was: ' + num);
+    console.log(`Input number was: ${num}`);
     if (num > 6 || num < 1) {
       throw new Error('Invalid number');
     }
     rn = randomNumber(1, 6);
-    console.log('Random number is equal to: ' + rn);
+    console.log(`Random number is equal to: ${rn}`);
     await getResult()
       .then((msg) => {
         console.log('WELL PLAYED!!');
@@ -69,7 +72,3 @@ const handleGame = async () => {
 };
 
 handleGame();
-
-function randomNumber(min, max) {
-  return math.floor(math.random() * (max - min + 1) + min);
-}

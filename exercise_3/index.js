@@ -13,23 +13,29 @@ const getJoke = async (searchParam) => {
     );
   } catch (error) {
     console.error(error);
+    return error;
   }
 };
 
+function countOccurences(string, word) {
+  return string.split(word).length - 1;
+}
+
 const searchJoke = async () => {
   try {
-    let searchParam = prompt('Input search term for jokes: ');
+    const searchParam = prompt('Input search term for jokes: ');
     console.log(`Input search parameter was: ${searchParam}
      `);
     await getJoke(searchParam)
-      .then(function (res) {
+      .then((res) => {
         if (res.status === 200) {
-          const response = res.data; //text/plain no need to stringify
+          const response = res.data; // text/plain no need to stringify
           console.log(response);
           console.log(
-            '\nThe search parameter got: ' +
-              countOccurences(response, searchParam) +
-              ' results',
+            `\nThe search parameter got: ${countOccurences(
+              response,
+              searchParam,
+            )} results`,
           ); // 2
           fs.appendFile('jokes.txt', response, (err) => {
             if (!err) {
@@ -37,9 +43,9 @@ const searchJoke = async () => {
             }
           });
         }
-        console.log('Status= ' + res.status);
+        console.log(`Status= ${res.status}`);
       })
-      .catch(function (err) {
+      .catch((err) => {
         console.log(err);
       });
   } catch (error) {
@@ -48,7 +54,3 @@ const searchJoke = async () => {
 };
 
 searchJoke();
-
-function countOccurences(string, word) {
-  return string.split(word).length - 1;
-}

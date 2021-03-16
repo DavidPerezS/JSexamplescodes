@@ -7,18 +7,19 @@ const getInformation = async () => {
     });
   } catch (error) {
     console.error(error);
+    return error;
   }
 };
 
 const information = async () => {
-  const info = getInformation()
-    .then(function (res) {
+  await getInformation()
+    .then((res) => {
       if (res.status === 200) {
         console.log(JSON.stringify(res.data));
       }
       console.log(res.status);
     })
-    .catch(function (err) {
+    .catch((err) => {
       console.log(err);
     });
 };

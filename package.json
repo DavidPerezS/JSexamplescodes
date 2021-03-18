@@ -20,7 +20,6 @@
     "axios": "^0.21.1",
     "dadjokes-wrapper": "^0.1.4",
     "mathjs": "^9.3.0",
-    "prompt": "^1.1.0",
     "prompt-sync": "^4.2.0"
   },
   "devDependencies": {

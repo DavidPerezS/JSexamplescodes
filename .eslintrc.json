@@ -2,7 +2,8 @@
     "env": {
         "browser": true,
         "commonjs": true,
-        "es2021": true
+        "es2021": true,
+        "jest": true
     },
     "extends": ["airbnb-base"],
     "parserOptions": {
@@ -15,6 +16,8 @@
         "func-names": "off",
         "no-var": "error",
         "implicit-arrow-linebreak": "off",
-        "linebreak-style": "off"
+        "linebreak-style": "off",
+        "comma-dangle": "off",
+        "function-paren-newline": "off"
     }
 }

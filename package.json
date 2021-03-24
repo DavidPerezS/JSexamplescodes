@@ -10,7 +10,7 @@
     "ex3": "node exercise_3/index.js",
     "format": "prettier --write .",
     "check": "npm ls && npm test",
-    "test": "echo \"no test\"",
+    "test": "jest --coverage",
     "lint": "eslint .",
     "lint:fix": "npm rum lint -- --fix"
   },
@@ -20,13 +20,13 @@
     "axios": "^0.21.1",
     "dadjokes-wrapper": "^0.1.4",
     "mathjs": "^9.3.0",
-    "prompt": "^1.1.0",
     "prompt-sync": "^4.2.0"
   },
   "devDependencies": {
     "eslint": "^7.2.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.22.1",
+    "jest": "^26.6.3",
     "prettier": "2.2.1"
   }
 }
